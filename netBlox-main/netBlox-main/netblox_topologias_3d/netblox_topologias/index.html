@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>NetBlox 3D: Arquiteto de Topologias</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <div id="game-container"></div>
+
+  <!-- HUD Superior -->
+  <div id="top-bar">
+    <div class="brand-badge">
+      <div class="roblox-logo">N</div>
+      <div>
+        <h1>NetBlox 3D</h1>
+        <span id="topology-subtitle">1. Ponto a Ponto (Cabeado)</span>
+      </div>
+    </div>
+
+    <div class="stats-pill">
+      <div class="stat">
+        <span class="label">TOPOLOGIA</span>
+        <span id="stage-counter" class="val">1 / 7</span>
+      </div>
+      <div class="stat">
+        <span class="label">STATUS</span>
+        <span id="net-status" class="val ok">ONLINE</span>
+      </div>
+      <div class="stat">
+        <span class="label">PONTOS</span>
+        <span id="score-val" class="val">0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seletor de Topologias (Baseado nos Diagramas) -->
+  <div id="topology-menu">
+    <button class="topo-btn active" data-topo="0">1. Ponto a Ponto (Cabo)</button>
+    <button class="topo-btn" data-topo="1">2. Ponto a Ponto (Bluetooth)</button>
+    <button class="topo-btn" data-topo="2">3. Estrela (Roteador)</button>
+    <button class="topo-btn" data-topo="3">4. Barramento (Hubs)</button>
+    <button class="topo-btn" data-topo="4">5. Anel (Switches)</button>
+    <button class="topo-btn" data-topo="5">6. Malha (Switches)</button>
+    <button class="topo-btn" data-topo="6">7. Rede Árvore (Híbrida)</button>
+  </div>
+
+  <!-- Painel Lateral de Ações e Informações -->
+  <div id="side-panel">
+    <h2 id="info-title">Ponto a Ponto (Cabeado)</h2>
+    <p id="info-desc">Conexão direta entre <b>PC-PT Computer1</b> e <b>Printer-PT Impressora1</b> via cabo dedicado.</p>
+    <div id="devices-list" class="device-tags"></div>
+
+    <div class="action-buttons">
+      <button id="btn-ping" class="btn-primary">📡 Testar Ping (Pacotes)</button>
+      <button id="btn-fault" class="btn-danger">⚡ Simular Falha de Link</button>
+      <button id="btn-repair" class="btn-success">🔧 Reparar Rede</button>
+    </div>
+
+    <div id="log-box">
+      <div class="log-entry info">[Sistema] Bem-vindo ao NetBlox 3D! Use WASD para andar e Espaço para pular.</div>
+    </div>
+  </div>
+
+  <!-- Controles Mobile / Instruções -->
+  <div id="controls-hint">
+    <span><b>WASD / Setas:</b> Mover Avatar</span>
+    <span><b>ESPAÇO:</b> Pular</span>
+    <span><b>Arrastar Mouse:</b> Girar Câmera</span>
+    <span><b>Clique no Cabo:</b> Cortar/Restaurar Link</span>
+  </div>
+
+  <div id="mobile-dpad">
+    <button data-key="KeyW">▲</button>
+    <div class="mid-row">
+      <button data-key="KeyA">◀</button>
+      <button data-key="Space">●</button>
+      <button data-key="KeyD">▶</button>
+    </div>
+    <button data-key="KeyS">▼</button>
+  </div>
+
+  <script src="js/topologies.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
